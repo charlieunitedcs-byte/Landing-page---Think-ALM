@@ -28,12 +28,10 @@ import {
 import { Button } from './components/ui/Button';
 import { Section, SectionContainer } from './components/ui/Section';
 import { MobileMenu } from './components/MobileMenu';
-import { CalendlyModal } from './components/CalendlyModal';
 import {
   initGA4,
   trackCTAClick,
   trackCalendlyOpened,
-  trackCalendlyScheduled,
   trackSeePlatformClick,
   trackScrollDepth
 } from './src/utils/analytics';
@@ -165,7 +163,6 @@ const DashboardMockup = () => (
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
 
   // Initialize Google Analytics on mount
   useEffect(() => {
@@ -186,17 +183,15 @@ function App() {
   const handleBookDemoClick = (location: string) => {
     trackCTAClick('Book a Demo', location);
     trackCalendlyOpened(location);
-    setIsCalendlyOpen(true);
+
+    // Open Calendly in new tab (more reliable than iframe)
+    const calendlyUrl = import.meta.env.VITE_CALENDLY_URL || 'https://calendly.com/charlie-thinkalm/30min';
+    window.open(calendlyUrl, '_blank', 'noopener,noreferrer');
   };
 
   const handleSeePlatformClick = (location: string) => {
     trackSeePlatformClick(location);
     // Could add video modal or scroll to demo section
-  };
-
-  const handleCalendlyScheduled = () => {
-    trackCalendlyScheduled();
-    setIsCalendlyOpen(false);
   };
 
   return (
@@ -243,13 +238,6 @@ function App() {
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
         onBookDemo={() => handleBookDemoClick('mobile-menu')}
-      />
-
-      {/* Calendly Modal */}
-      <CalendlyModal
-        isOpen={isCalendlyOpen}
-        onClose={() => setIsCalendlyOpen(false)}
-        onEventScheduled={handleCalendlyScheduled}
       />
 
       {/* SECTION 1 — HERO (Above the Fold) */}

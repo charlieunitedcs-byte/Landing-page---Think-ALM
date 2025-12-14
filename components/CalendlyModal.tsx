@@ -81,12 +81,13 @@ export const CalendlyModal: React.FC<CalendlyModalProps> = ({
 
           {/* Calendly iframe */}
           <iframe
-            src={`${calendlyUrl}?hide_event_type_details=0&hide_gdpr_banner=1&primary_color=2CC5A1`}
+            src={`${calendlyUrl}?embed_domain=${window.location.hostname}&embed_type=Inline&hide_gdpr_banner=1&primary_color=2CC5A1`}
             width="100%"
             height="100%"
             frameBorder="0"
             title="Book a demo with Calendly"
             className="rounded-2xl"
+            allow="payment"
           />
         </div>
       </div>
