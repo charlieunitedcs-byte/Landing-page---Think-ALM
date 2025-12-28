@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" fill="none">
+  <rect x="60" y="10" width="40" height="40" rx="6" fill="#4285F4"/>
+  <text x="110" y="38" font-family="Arial, sans-serif" font-size="18" font-weight="600" fill="#5F6368" text-anchor="start">Calendar</text>
+  <text x="80" y="37" font-family="Arial, sans-serif" font-size="24" font-weight="700" fill="white" text-anchor="middle">31</text>
+</svg>
