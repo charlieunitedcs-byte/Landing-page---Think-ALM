@@ -1,0 +1,8 @@
+User-agent: *
+Allow: /
+
+# Block API endpoints from indexing
+Disallow: /api/
+
+Host: https://www.thinkalm.com.au
+Sitemap: https://www.thinkalm.com.au/sitemap.xml
