@@ -118,27 +118,17 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onBookD
             </button>
 
             {/* Logo */}
-            <div className="mb-12 flex items-center gap-2">
-              <div className="w-10 h-10 bg-brand-500 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(44,197,161,0.4)]">
-                <svg className="w-6 h-6 text-dark-950 fill-current" viewBox="0 0 24 24">
-                  <path d="M13 2L3 14h8l-1 8 10-12h-8l1-8z"/>
-                </svg>
-              </div>
+            <div className="mb-12 flex items-center gap-3">
+              <img
+                src="/thinkalm-logo.png"
+                alt="Think ALM logo"
+                className="w-10 h-10 rounded-md object-cover border border-white/10"
+              />
               <span className="font-bold text-2xl text-white">ThinkALM</span>
             </div>
 
             {/* Navigation Links */}
             <nav className="space-y-4 mb-8">
-              <a
-                href="#platform"
-                onClick={(e) => {
-                  e.preventDefault();
-                  handleNavClick('platform');
-                }}
-                className="block text-xl font-medium text-gray-300 hover:text-brand-500 transition-colors py-3 px-4 rounded-lg hover:bg-white/5"
-              >
-                Platform
-              </a>
               <a
                 href="#solutions"
                 onClick={(e) => {
@@ -147,17 +137,27 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onBookD
                 }}
                 className="block text-xl font-medium text-gray-300 hover:text-brand-500 transition-colors py-3 px-4 rounded-lg hover:bg-white/5"
               >
-                Solutions
+                Solution
               </a>
               <a
-                href="#pricing"
+                href="#agents"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavClick('pricing');
+                  handleNavClick('agents');
                 }}
                 className="block text-xl font-medium text-gray-300 hover:text-brand-500 transition-colors py-3 px-4 rounded-lg hover:bg-white/5"
               >
-                Pricing
+                Agent Types
+              </a>
+              <a
+                href="#faq"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('faq');
+                }}
+                className="block text-xl font-medium text-gray-300 hover:text-brand-500 transition-colors py-3 px-4 rounded-lg hover:bg-white/5"
+              >
+                FAQ
               </a>
             </nav>
 
