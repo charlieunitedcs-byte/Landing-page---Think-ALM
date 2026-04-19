@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Bot, CalendarCheck, Clock, Database, Mail, Menu, ShieldCheck } from 'lucide-react';
+import { ArrowRight, Bot, CalendarCheck, Clock, Database, Mail, Menu, ShieldCheck, X } from 'lucide-react';
 import { Button } from './components/ui/Button';
 import { Section, SectionContainer } from './components/ui/Section';
 import { MobileMenu } from './components/MobileMenu';
 import { DiagnosticTool } from './components/DiagnosticTool';
+import { LeadCaptureForm } from './components/LeadCaptureForm';
 import { initGA4, trackCTAClick, trackCalendlyOpened, trackScrollDepth } from './src/utils/analytics';
 
 const faqs = [
@@ -25,7 +26,7 @@ const faqs = [
   {
     question: 'Do I need to change our CRM or tech stack?',
     answer:
-      'No. Think ALM agents are designed to work with your existing setup. Our primary integration is Reapit CRM, with additional integrations available on request.',
+      'No. Think ALM agents are designed to work with your existing setup. Our primary integration is Reapit CRM, and we can also support broader commercial CRM environments such as HubSpot and Salesforce based on your workflow.',
   },
   {
     question: 'What does the AI agent actually say to leads?',
@@ -46,6 +47,7 @@ const faqs = [
 
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
 
   useEffect(() => {
     initGA4();
@@ -62,6 +64,11 @@ function App() {
     trackCalendlyOpened(location);
     const calendlyUrl = import.meta.env.VITE_CALENDLY_URL || 'https://calendly.com/charlie-thinkalm/30min';
     window.open(calendlyUrl, '_blank', 'noopener,noreferrer');
+  };
+
+  const handleTryThinkALMClick = (location: string) => {
+    trackCTAClick('Try ThinkALM', location);
+    setIsLeadFormOpen(true);
   };
 
   const scrollToId = (id: string) => {
@@ -86,6 +93,7 @@ function App() {
             <a href="#agents" className="text-sm font-medium text-gray-300 hover:text-brand-500 transition-colors">Agent Types</a>
             <a href="#faq" className="text-sm font-medium text-gray-300 hover:text-brand-500 transition-colors">FAQ</a>
             <Button size="sm" onClick={() => handleBookDemoClick('navigation')}>Book a Demo</Button>
+            <Button variant="outline" size="sm" onClick={() => handleTryThinkALMClick('navigation')}>Try ThinkALM</Button>
           </div>
           <button
             onClick={() => setIsMobileMenuOpen(true)}
@@ -102,6 +110,26 @@ function App() {
         onClose={() => setIsMobileMenuOpen(false)}
         onBookDemo={() => handleBookDemoClick('mobile-menu')}
       />
+
+      {isLeadFormOpen && (
+        <div className="fixed inset-0 z-[70] bg-black/60 backdrop-blur-sm p-4 md:p-8 overflow-y-auto">
+          <div className="max-w-6xl mx-auto relative">
+            <button
+              onClick={() => setIsLeadFormOpen(false)}
+              aria-label="Close form"
+              className="absolute -top-2 right-0 md:-top-4 md:-right-4 w-10 h-10 rounded-full bg-white text-slate-900 border border-slate-200 flex items-center justify-center shadow"
+            >
+              <X size={20} />
+            </button>
+            <LeadCaptureForm
+              className="mt-0"
+              onSuccess={() => {
+                setTimeout(() => setIsLeadFormOpen(false), 1500);
+              }}
+            />
+          </div>
+        </div>
+      )}
 
       <SectionContainer id="main-content" className="relative z-10 pt-20 pb-24 lg:pt-28 lg:pb-32">
         <Section className="!py-0 text-center">
@@ -283,7 +311,7 @@ function App() {
             <div className="rounded-xl border border-white/10 bg-dark-900/70 p-6">
               <h3 className="text-white text-xl font-semibold mb-2">Additional Integrations</h3>
               <p className="text-gray-400">
-                Additional CRM and portal integrations are available on request. Contact us to discuss your stack.
+                Additional integrations are available on request, including commercial CRM workflows such as HubSpot and Salesforce.
               </p>
             </div>
           </div>
@@ -337,7 +365,10 @@ function App() {
             <p className="text-gray-300 mb-5">
               Seen enough? Most agencies that run an analysis book a demo the same day.
             </p>
-            <Button size="lg" onClick={() => handleBookDemoClick('post-diagnostic')}>Book a Demo</Button>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <Button size="lg" onClick={() => handleBookDemoClick('post-diagnostic')}>Book a Demo</Button>
+              <Button size="lg" variant="outline" onClick={() => handleTryThinkALMClick('post-diagnostic')}>Try ThinkALM</Button>
+            </div>
           </div>
         </Section>
       </SectionContainer>
@@ -378,6 +409,7 @@ function App() {
               <a href="#faq" className="hover:text-brand-400">Privacy Policy</a>
               <a href="#faq" className="hover:text-brand-400">Terms of Service</a>
               <button onClick={() => handleBookDemoClick('footer')} className="hover:text-brand-400">Book a Demo</button>
+              <button onClick={() => handleTryThinkALMClick('footer')} className="hover:text-brand-400">Try ThinkALM</button>
             </div>
             <div className="flex md:justify-end flex-wrap gap-4 text-sm">
               <a href="https://www.facebook.com/thinkalmaiagent" target="_blank" rel="noopener noreferrer" className="hover:text-brand-400">Facebook</a>
