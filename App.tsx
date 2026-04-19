@@ -370,7 +370,7 @@ function App() {
             </div>
             <p className="flex items-center gap-2 mb-2"><Mail size={16} /> admin@thinkalm.com.au</p>
             <p className="text-sm text-gray-500">Melbourne, Australia</p>
-            <p className="text-sm text-gray-500 mt-2">ABN: [Insert ABN]</p>
+            <p className="text-sm text-gray-500 mt-2">Phone: 03 4157 6313</p>
           </div>
           <div className="md:text-right">
             <div className="flex md:justify-end flex-wrap gap-4 mb-6">
