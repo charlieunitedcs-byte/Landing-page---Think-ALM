@@ -109,6 +109,7 @@ function App() {
         isOpen={isMobileMenuOpen}
         onClose={() => setIsMobileMenuOpen(false)}
         onBookDemo={() => handleBookDemoClick('mobile-menu')}
+        onTryThinkALM={() => handleTryThinkALMClick('mobile-menu')}
       />
 
       {isLeadFormOpen && (

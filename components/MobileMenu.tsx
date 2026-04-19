@@ -6,9 +6,10 @@ interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   onBookDemo: () => void;
+  onTryThinkALM: () => void;
 }
 
-export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onBookDemo }) => {
+export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onBookDemo, onTryThinkALM }) => {
   const menuRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
 
@@ -81,6 +82,11 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onBookD
   const handleBookDemoClick = () => {
     onClose();
     onBookDemo();
+  };
+
+  const handleTryThinkALMClick = () => {
+    onClose();
+    onTryThinkALM();
   };
 
   if (!isOpen) return null;
@@ -161,14 +167,24 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onBookD
               </a>
             </nav>
 
-            {/* CTA Button */}
-            <Button
-              onClick={handleBookDemoClick}
-              className="w-full"
-              size="lg"
-            >
-              Book a Demo
-            </Button>
+            {/* CTA Buttons */}
+            <div className="space-y-3">
+              <Button
+                onClick={handleBookDemoClick}
+                className="w-full"
+                size="lg"
+              >
+                Book a Demo
+              </Button>
+              <Button
+                onClick={handleTryThinkALMClick}
+                className="w-full"
+                size="lg"
+                variant="outline"
+              >
+                Try ThinkALM
+              </Button>
+            </div>
           </div>
         </div>
       </div>
