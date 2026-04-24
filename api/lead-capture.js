@@ -67,7 +67,7 @@ export default async function handler(req, res) {
 
     await transporter.sendMail({
       from: process.env.EMAIL_FROM || '"ThinkALM" <noreply@thinkalm.com.au>',
-      to: process.env.ADMIN_EMAIL || 'admin@thinkalm.com.au',
+      to: process.env.ADMIN_EMAIL || 'charlie@thinkalm.ai',
       subject: 'New Website Lead Form Submission',
       html: `
         <h2>New Think ALM Lead</h2>
