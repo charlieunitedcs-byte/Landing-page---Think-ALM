@@ -3,9 +3,10 @@ import { ArrowRight, Bot, CalendarCheck, Clock, Database, Mail, Menu, ShieldChec
 import { Button } from './components/ui/Button';
 import { Section, SectionContainer } from './components/ui/Section';
 import { MobileMenu } from './components/MobileMenu';
+import { CalendlyModal } from './components/CalendlyModal';
 import { DiagnosticTool } from './components/DiagnosticTool';
 import { LeadCaptureForm } from './components/LeadCaptureForm';
-import { initGA4, trackCTAClick, trackCalendlyOpened, trackScrollDepth } from './src/utils/analytics';
+import { initGA4, trackCTAClick, trackCalendlyOpened, trackCalendlyScheduled, trackScrollDepth } from './src/utils/analytics';
 
 const faqs = [
   {
@@ -48,6 +49,7 @@ const faqs = [
 function App() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isLeadFormOpen, setIsLeadFormOpen] = useState(false);
+  const [isCalendlyOpen, setIsCalendlyOpen] = useState(false);
 
   useEffect(() => {
     initGA4();
@@ -62,8 +64,7 @@ function App() {
   const handleBookDemoClick = (location: string) => {
     trackCTAClick('Book a Demo', location);
     trackCalendlyOpened(location);
-    const calendlyUrl = import.meta.env.VITE_CALENDLY_URL || 'https://calendly.com/charlie-thinkalm/30min';
-    window.open(calendlyUrl, '_blank', 'noopener,noreferrer');
+    setIsCalendlyOpen(true);
   };
 
   const handleTryThinkALMClick = (location: string) => {
@@ -112,6 +113,16 @@ function App() {
         onTryThinkALM={() => handleTryThinkALMClick('mobile-menu')}
       />
 
+      <CalendlyModal
+        isOpen={isCalendlyOpen}
+        onClose={() => setIsCalendlyOpen(false)}
+        onEventScheduled={() => {
+          trackCalendlyScheduled();
+          setIsCalendlyOpen(false);
+          window.location.href = '/booking-confirmed/';
+        }}
+      />
+
       {isLeadFormOpen && (
         <div className="fixed inset-0 z-[70] bg-black/60 backdrop-blur-sm p-4 md:p-8 overflow-y-auto">
           <div className="max-w-6xl mx-auto relative">
@@ -127,6 +138,8 @@ function App() {
               onSuccess={() => {
                 setTimeout(() => setIsLeadFormOpen(false), 1500);
               }}
+              redirectOnSuccess={true}
+              successRedirectUrl="/thank-you/"
             />
           </div>
         </div>

@@ -6,6 +6,8 @@ import { submitLeadCapture } from '../src/utils/api';
 interface LeadCaptureFormProps {
   onSuccess?: () => void;
   className?: string;
+  redirectOnSuccess?: boolean;
+  successRedirectUrl?: string;
 }
 
 const prioritiesList = [
@@ -18,7 +20,12 @@ const prioritiesList = [
 const databaseSizeOptions = ['0-2,500', '2,500-10,000', '10,000-25,000', '25,000+'];
 const crmOptions = ['Reapit', 'HubSpot', 'Salesforce', 'Pipedrive', 'Other'];
 
-export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({ onSuccess, className = '' }) => {
+export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
+  onSuccess,
+  className = '',
+  redirectOnSuccess = true,
+  successRedirectUrl = '/thank-you/',
+}) => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
@@ -104,6 +111,12 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({ onSuccess, cla
         message: '',
         consentGiven: false,
       });
+
+      if (redirectOnSuccess) {
+        setTimeout(() => {
+          window.location.href = successRedirectUrl;
+        }, 300);
+      }
     } catch (error) {
       console.error('Lead capture failed:', error);
       setErrorMessage('Could not submit right now. Please try again.');
