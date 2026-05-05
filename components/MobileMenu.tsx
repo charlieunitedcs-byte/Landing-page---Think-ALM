@@ -174,7 +174,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onBookD
                 className="w-full"
                 size="lg"
               >
-                Book a Demo
+                Book an Appointment
               </Button>
               <Button
                 onClick={handleTryThinkALMClick}
