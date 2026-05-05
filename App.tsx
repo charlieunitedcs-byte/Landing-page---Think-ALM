@@ -91,6 +91,7 @@ function App() {
             <a href="#solutions" className="text-sm font-medium text-gray-300 hover:text-brand-500 transition-colors">Solution</a>
             <a href="#agents" className="text-sm font-medium text-gray-300 hover:text-brand-500 transition-colors">Agent Types</a>
             <a href="#faq" className="text-sm font-medium text-gray-300 hover:text-brand-500 transition-colors">FAQ</a>
+            <a href="/blog/" className="text-sm font-medium text-gray-300 hover:text-brand-500 transition-colors">Blog</a>
             <Button size="sm" onClick={() => handleBookDemoClick('navigation')}>Free Demo</Button>
             <Button variant="outline" size="sm" onClick={() => handleTryThinkALMClick('navigation')}>Try ThinkALM</Button>
           </div>

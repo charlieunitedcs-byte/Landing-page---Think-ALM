@@ -165,6 +165,12 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onBookD
               >
                 FAQ
               </a>
+              <a
+                href="/blog/"
+                className="block text-xl font-medium text-gray-300 hover:text-brand-500 transition-colors py-3 px-4 rounded-lg hover:bg-white/5"
+              >
+                Blog
+              </a>
             </nav>
 
             {/* CTA Buttons */}
