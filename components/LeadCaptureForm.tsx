@@ -242,7 +242,7 @@ export const LeadCaptureForm: React.FC<LeadCaptureFormProps> = ({
                 Sending...
               </>
             ) : (
-              'Book an Appointment'
+              'Free Demo'
             )}
           </Button>
         </div>

@@ -60,7 +60,7 @@ function App() {
   }, []);
 
   const handleBookDemoClick = (location: string) => {
-    trackCTAClick('Book an Appointment', location);
+    trackCTAClick('Free Demo', location);
     const calendlyUrl = 'https://calendly.com/charlie-thinkalm/30min';
     window.open(calendlyUrl, '_blank', 'noopener,noreferrer');
   };
@@ -91,7 +91,7 @@ function App() {
             <a href="#solutions" className="text-sm font-medium text-gray-300 hover:text-brand-500 transition-colors">Solution</a>
             <a href="#agents" className="text-sm font-medium text-gray-300 hover:text-brand-500 transition-colors">Agent Types</a>
             <a href="#faq" className="text-sm font-medium text-gray-300 hover:text-brand-500 transition-colors">FAQ</a>
-            <Button size="sm" onClick={() => handleBookDemoClick('navigation')}>Book an Appointment</Button>
+            <Button size="sm" onClick={() => handleBookDemoClick('navigation')}>Free Demo</Button>
             <Button variant="outline" size="sm" onClick={() => handleTryThinkALMClick('navigation')}>Try ThinkALM</Button>
           </div>
           <button
@@ -143,7 +143,7 @@ function App() {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-10">
             <Button size="lg" className="w-full sm:w-auto px-10 h-14 text-lg" onClick={() => handleBookDemoClick('hero-primary')}>
-              Book an Appointment
+              Free Demo
             </Button>
             <Button variant="ghost" size="lg" className="w-full sm:w-auto gap-2 text-white border border-white/10 hover:bg-white/5" onClick={() => scrollToId('how-it-works')}>
               <ArrowRight size={18} /> See How It Works
@@ -368,7 +368,7 @@ function App() {
               Seen enough? Most agencies that run an analysis book a demo the same day.
             </p>
             <div className="flex flex-col sm:flex-row gap-3 justify-center">
-              <Button size="lg" onClick={() => handleBookDemoClick('post-diagnostic')}>Book an Appointment</Button>
+              <Button size="lg" onClick={() => handleBookDemoClick('post-diagnostic')}>Free Demo</Button>
               <Button size="lg" variant="outline" onClick={() => handleTryThinkALMClick('post-diagnostic')}>Try ThinkALM</Button>
             </div>
           </div>
@@ -410,7 +410,7 @@ function App() {
               <a href="#main-content" className="hover:text-brand-400">Home</a>
               <a href="#faq" className="hover:text-brand-400">Privacy Policy</a>
               <a href="#faq" className="hover:text-brand-400">Terms of Service</a>
-              <button onClick={() => handleBookDemoClick('footer')} className="hover:text-brand-400">Book an Appointment</button>
+              <button onClick={() => handleBookDemoClick('footer')} className="hover:text-brand-400">Free Demo</button>
               <button onClick={() => handleTryThinkALMClick('footer')} className="hover:text-brand-400">Try ThinkALM</button>
             </div>
             <div className="flex md:justify-end flex-wrap gap-4 text-sm">
