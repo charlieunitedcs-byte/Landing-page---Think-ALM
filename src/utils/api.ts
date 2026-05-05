@@ -1,6 +1,7 @@
 // API utility functions for ThinkALM backend
 
-const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'https://thinkalm.com.au';
+// Use same-origin by default to avoid cross-domain CORS issues
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '';
 
 // Generic API call handler
 async function apiCall(endpoint: string, options: RequestInit = {}) {
