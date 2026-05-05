@@ -61,7 +61,8 @@ function App() {
 
   const handleBookDemoClick = (location: string) => {
     trackCTAClick('Book an Appointment', location);
-    setIsLeadFormOpen(true);
+    const calendlyUrl = 'https://calendly.com/charlie-thinkalm/30min';
+    window.open(calendlyUrl, '_blank', 'noopener,noreferrer');
   };
 
   const handleTryThinkALMClick = (location: string) => {
