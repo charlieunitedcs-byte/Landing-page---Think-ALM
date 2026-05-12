@@ -57,13 +57,13 @@ export async function submitDatabaseROI(databaseSize: string, commission: string
 export interface LeadCapturePayload {
   fullName: string;
   workEmail: string;
-  phone: string;
-  agencyName: string;
-  databaseSize: string;
-  crm: string;
-  priorities: string[];
+  phone?: string;
+  agencyName?: string;
+  databaseSize?: string;
+  crm?: string;
+  priorities?: string[];
   message?: string;
-  consentGiven: boolean;
+  consentGiven?: boolean;
   utmSource?: string;
   utmMedium?: string;
   utmCampaign?: string;

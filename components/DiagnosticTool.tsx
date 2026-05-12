@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Upload, CheckCircle2, Loader2 } from 'lucide-react';
 import { Button } from './ui/Button';
+import { submitCallAnalysis, submitDatabaseROI } from '../src/utils/api';
 
 type DiagnosticType = 'call' | 'database';
 
@@ -35,7 +36,7 @@ export const DiagnosticTool: React.FC<DiagnosticToolProps> = ({
   };
 
   // Handle Call Analysis Submit
-  const handleCallSubmit = (e: React.FormEvent) => {
+  const handleCallSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!callFile) {
@@ -51,10 +52,13 @@ export const DiagnosticTool: React.FC<DiagnosticToolProps> = ({
     setCallEmailError('');
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Call real API
+      await submitCallAnalysis(callFile, callEmail);
+
       setIsLoading(false);
       setIsSuccess(true);
+
       if (onSubmit) {
         onSubmit('call', { file: callFile, email: callEmail });
       }
@@ -65,11 +69,15 @@ export const DiagnosticTool: React.FC<DiagnosticToolProps> = ({
         setCallFile(null);
         setCallEmail('');
       }, 3000);
-    }, 2000);
+    } catch (error) {
+      setIsLoading(false);
+      alert('Failed to submit call analysis. Please try again or contact support.');
+      console.error('Call analysis submission error:', error);
+    }
   };
 
   // Handle Database ROI Submit
-  const handleDatabaseSubmit = (e: React.FormEvent) => {
+  const handleDatabaseSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
 
     if (!dbSize || !dbCommission) {
@@ -85,10 +93,13 @@ export const DiagnosticTool: React.FC<DiagnosticToolProps> = ({
     setDbEmailError('');
     setIsLoading(true);
 
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Call real API
+      await submitDatabaseROI(dbSize, dbCommission, dbEmail);
+
       setIsLoading(false);
       setIsSuccess(true);
+
       if (onSubmit) {
         onSubmit('database', { size: dbSize, commission: dbCommission, email: dbEmail });
       }
@@ -100,7 +111,11 @@ export const DiagnosticTool: React.FC<DiagnosticToolProps> = ({
         setDbCommission('');
         setDbEmail('');
       }, 3000);
-    }, 2000);
+    } catch (error) {
+      setIsLoading(false);
+      alert('Failed to submit database ROI calculation. Please try again or contact support.');
+      console.error('Database ROI submission error:', error);
+    }
   };
 
   return (

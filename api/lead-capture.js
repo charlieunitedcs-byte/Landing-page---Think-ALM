@@ -35,10 +35,10 @@ export default async function handler(req, res) {
       submittedAt,
     } = req.body || {};
 
-    if (!fullName || !workEmail || !phone || !agencyName || !databaseSize || consentGiven !== true) {
+    if (!fullName || !workEmail) {
       return res.status(400).json({
         success: false,
-        error: 'Missing required fields or consent not provided',
+        error: 'Missing required fields',
       });
     }
 
@@ -64,6 +64,8 @@ export default async function handler(req, res) {
 
     const safePriorities = Array.isArray(priorities) ? priorities : [];
     const submittedTime = submittedAt || new Date().toISOString();
+    const siteUrl = (process.env.PUBLIC_SITE_URL || 'https://www.thinkalm.com.au').replace(/\/$/, '');
+    const auditUrl = `${siteUrl}/audit/your-dormant-database-audit.pdf`;
 
     await transporter.sendMail({
       from: process.env.EMAIL_FROM || '"ThinkALM" <noreply@thinkalm.com.au>',
@@ -73,12 +75,12 @@ export default async function handler(req, res) {
         <h2>New Think ALM Lead</h2>
         <p><strong>Name:</strong> ${fullName}</p>
         <p><strong>Email:</strong> ${workEmail}</p>
-        <p><strong>Phone:</strong> ${phone}</p>
-        <p><strong>Agency:</strong> ${agencyName}</p>
-        <p><strong>Database size:</strong> ${databaseSize}</p>
-        <p><strong>CRM:</strong> ${crm || 'Not specified'}</p>
-        <p><strong>Priorities:</strong> ${safePriorities.length ? safePriorities.join(', ') : 'Not specified'}</p>
-        <p><strong>Message:</strong> ${message || 'None provided'}</p>
+        <p><strong>Phone:</strong> ${phone || 'Not provided'}</p>
+        <p><strong>Agency:</strong> ${agencyName || 'Not provided'}</p>
+        <p><strong>Database size:</strong> ${databaseSize || 'Not provided'}</p>
+        <p><strong>CRM:</strong> ${crm || 'Not provided'}</p>
+        <p><strong>Priorities:</strong> ${safePriorities.length ? safePriorities.join(', ') : 'Not provided'}</p>
+        <p><strong>Message:</strong> ${message || 'Not provided'}</p>
         <hr />
         <p><strong>UTM Source:</strong> ${utmSource || 'N/A'}</p>
         <p><strong>UTM Medium:</strong> ${utmMedium || 'N/A'}</p>
@@ -91,20 +93,32 @@ export default async function handler(req, res) {
     await transporter.sendMail({
       from: process.env.EMAIL_FROM || '"ThinkALM" <noreply@thinkalm.com.au>',
       to: workEmail,
-      subject: 'Thanks for your enquiry - Think ALM',
+      subject: 'Your Dormant Database Audit - Think ALM',
       html: `
         <div style="font-family: Inter, Arial, sans-serif; max-width: 600px; margin: 0 auto; line-height: 1.6; color: #1f2937;">
-          <h2 style="margin-bottom: 8px;">Thanks ${fullName}, we received your request.</h2>
-          <p>Our team is reviewing your agency details and will get back to you within 1 business day.</p>
-          <p>In the meantime, you can book a strategy call here:</p>
+          <h2 style="margin-bottom: 8px;">Thanks ${fullName}, your audit is ready.</h2>
+          <p>We've attached your Dormant Database Audit to this email.</p>
+          <p>If the attachment does not open, use this secure link:</p>
+          <p>
+            <a href="${auditUrl}" style="display:inline-block; background:#0f172a; color:#fff; text-decoration:none; padding:12px 18px; border-radius:8px; font-weight:600;">
+              Download Audit PDF
+            </a>
+          </p>
+          <p>Want help applying this to your agency? Book a strategy call:</p>
           <p>
             <a href="https://calendly.com/charlie-thinkalm/30min" style="display:inline-block; background:#2CC5A1; color:#fff; text-decoration:none; padding:12px 18px; border-radius:8px; font-weight:600;">
-              Book a Demo
+              Book Free Demo
             </a>
           </p>
           <p>Regards,<br />Think ALM Team</p>
         </div>
       `,
+      attachments: [
+        {
+          filename: 'Your-Dormant-Database-Audit.pdf',
+          path: auditUrl,
+        },
+      ],
     });
 
     return res.status(200).json({

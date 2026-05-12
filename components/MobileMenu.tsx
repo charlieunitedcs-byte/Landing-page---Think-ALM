@@ -136,24 +136,34 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onBookD
             {/* Navigation Links */}
             <nav className="space-y-4 mb-8">
               <a
-                href="#solutions"
+                href="#database-worth-calculator"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavClick('solutions');
+                  handleNavClick('database-worth-calculator');
                 }}
                 className="block text-xl font-medium text-gray-300 hover:text-brand-500 transition-colors py-3 px-4 rounded-lg hover:bg-white/5"
               >
-                Solution
+                Calculator
               </a>
               <a
-                href="#agents"
+                href="#how-it-works-after-audit"
                 onClick={(e) => {
                   e.preventDefault();
-                  handleNavClick('agents');
+                  handleNavClick('how-it-works-after-audit');
                 }}
                 className="block text-xl font-medium text-gray-300 hover:text-brand-500 transition-colors py-3 px-4 rounded-lg hover:bg-white/5"
               >
-                Agent Types
+                Method
+              </a>
+              <a
+                href="#case-study-proof"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleNavClick('case-study-proof');
+                }}
+                className="block text-xl font-medium text-gray-300 hover:text-brand-500 transition-colors py-3 px-4 rounded-lg hover:bg-white/5"
+              >
+                Case Study
               </a>
               <a
                 href="#faq"
@@ -188,7 +198,7 @@ export const MobileMenu: React.FC<MobileMenuProps> = ({ isOpen, onClose, onBookD
                 size="lg"
                 variant="outline"
               >
-                Try ThinkALM
+                Download Audit
               </Button>
             </div>
           </div>
