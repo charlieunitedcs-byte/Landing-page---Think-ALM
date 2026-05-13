@@ -340,14 +340,23 @@ function App() {
       <SectionContainer className="relative z-10">
         <Section>
           <div className="max-w-5xl mx-auto rounded-2xl border border-white/10 bg-dark-900/70 p-8 md:p-10">
-            <p className="text-xs font-semibold tracking-[0.2em] text-brand-400 mb-3">FOUNDER</p>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5">Built by a Melbourne operator with 15 years in sales leadership.</h2>
-            <p className="text-gray-300 text-lg mb-4">
-              Think ALM was built for Australian real estate agencies that need practical systems, not theory. We combine on-the-ground sales experience with managed deployment so principals can see measurable uplift, not another dashboard.
-            </p>
-            <p className="text-gray-400">
-              You work directly with a local team that understands the rhythm of AU vendor pipelines, appraisals, and listing conversion.
-            </p>
+            <div className="grid md:grid-cols-[220px_1fr] gap-8 items-center">
+              <img
+                src="/assets/charlie-bailey.png"
+                alt="Charlie Bailey"
+                className="w-full max-w-[220px] mx-auto md:mx-0 rounded-2xl border border-white/10 object-cover"
+              />
+              <div>
+                <p className="text-xs font-semibold tracking-[0.2em] text-brand-400 mb-3">FOUNDER</p>
+                <h2 className="text-3xl sm:text-4xl font-bold text-white mb-5">Built by a Melbourne operator with 15 years in sales leadership.</h2>
+                <p className="text-gray-300 text-lg mb-4">
+                  Think ALM was built for Australian real estate agencies that need practical systems, not theory. We combine on-the-ground sales experience with managed deployment so principals can see measurable uplift, not another dashboard.
+                </p>
+                <p className="text-gray-400">
+                  You work directly with a local team that understands the rhythm of AU vendor pipelines, appraisals, and listing conversion.
+                </p>
+              </div>
+            </div>
           </div>
         </Section>
       </SectionContainer>
