@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Get the dormant database audit playbook for Australian real estate principals." />
+    <title>Think ALM Audit | Dormant Database Playbook</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script>
+      (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+      new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+      j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+      'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-T4BR879S');
+    </script>
+    <style>
+      :root {
+        --navy: #1f4e79;
+        --accent: #2e75b6;
+        --fill: #deebf7;
+        --bg: #ffffff;
+        --bg-soft: #f2f6fa;
+        --border: #bfd4e8;
+        --text: #262626;
+        --muted: #595959;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        font-family: Inter, "Helvetica Neue", Arial, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+      }
+      .container {
+        width: min(1200px, calc(100% - 32px));
+        margin: 0 auto;
+      }
+      .section { padding: 80px 0; }
+      .hero { padding: 44px 0 72px; }
+      .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: var(--text);
+        margin-bottom: 24px;
+      }
+      .logo img { width: 32px; height: 32px; border-radius: 8px; }
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 1fr;
+        gap: 32px;
+        align-items: start;
+      }
+      .eyebrow {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--accent);
+        margin: 0 0 12px;
+      }
+      h1 {
+        margin: 0 0 16px;
+        color: var(--navy);
+        font-size: clamp(30px, 5vw, 54px);
+        line-height: 1.1;
+      }
+      h2 {
+        margin: 0 0 14px;
+        color: var(--navy);
+        font-size: clamp(24px, 4vw, 34px);
+        line-height: 1.2;
+      }
+      h3 {
+        margin: 0 0 10px;
+        font-size: 20px;
+        color: var(--text);
+      }
+      p { font-size: 17px; line-height: 1.65; margin: 0; }
+      .subhead { color: var(--text); max-width: 650px; }
+      .hero-preview {
+        margin-top: 22px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: var(--bg-soft);
+        padding: 14px;
+        max-width: 520px;
+      }
+      .hero-preview img {
+        width: 100%;
+        border-radius: 6px;
+        display: block;
+      }
+      .form-card {
+        background: var(--bg-soft);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 24px;
+      }
+      .form-heading {
+        margin: 0 0 16px;
+        color: var(--navy);
+        font-size: 24px;
+        font-weight: 700;
+      }
+      .field {
+        width: 100%;
+        height: 56px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        padding: 0 14px;
+        font-size: 16px;
+        margin-bottom: 12px;
+      }
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        border: 0;
+        border-radius: 8px;
+        background: var(--navy);
+        color: #fff;
+        font-size: 17px;
+        font-weight: 600;
+        padding: 16px 18px;
+        cursor: pointer;
+      }
+      .btn[disabled] { opacity: 0.55; cursor: not-allowed; }
+      .micro {
+        margin-top: 10px;
+        font-size: 13px;
+        line-height: 1.5;
+        color: var(--muted);
+      }
+      .error {
+        color: #9b1c1c;
+        font-size: 14px;
+        margin: 8px 0 10px;
+      }
+      .trust-strip {
+        margin-top: 16px;
+        font-size: 14px;
+        color: var(--muted);
+        border-top: 1px solid var(--border);
+        padding-top: 12px;
+      }
+      .inside-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+      .inside-card {
+        border: 1px solid var(--border);
+        background: #fff;
+        border-radius: 8px;
+        padding: 18px;
+      }
+      .band {
+        border: 1px solid var(--border);
+        background: var(--bg-soft);
+        border-radius: 8px;
+        padding: 28px;
+      }
+      .cred-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 14px;
+      }
+      .forsyth-logo {
+        max-height: 44px;
+        width: auto;
+      }
+      .system-preview {
+        margin-top: 18px;
+      }
+      .system-preview img {
+        width: 100%;
+        border-radius: 8px;
+        border: 1px solid #27496a;
+        display: block;
+      }
+      .founder {
+        display: grid;
+        grid-template-columns: 160px 1fr;
+        gap: 20px;
+        align-items: center;
+      }
+      .founder img {
+        width: 160px;
+        height: 160px;
+        border-radius: 8px;
+        object-fit: cover;
+      }
+      details {
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: #fff;
+        padding: 16px 18px;
+      }
+      details + details { margin-top: 10px; }
+      summary { font-weight: 700; cursor: pointer; color: var(--navy); }
+      details p { margin-top: 10px; color: var(--text); font-size: 16px; }
+      .final-cta { background: var(--bg-soft); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+      footer {
+        border-top: 1px solid var(--border);
+        padding: 26px 0;
+        font-size: 14px;
+        color: var(--muted);
+      }
+      footer a { color: var(--navy); text-decoration: none; }
+      @media (max-width: 900px) {
+        .hero-grid, .founder { grid-template-columns: 1fr; }
+        .inside-grid { grid-template-columns: 1fr; }
+        .section { padding: 64px 0; }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-T4BR879S" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+    <main>
+      <section class="hero">
+        <div class="container">
+          <a class="logo" href="/" aria-label="Think ALM">
+            <img src="/thinkalm-logo.png" alt="Think ALM logo" />
+            <strong>Think ALM</strong>
+          </a>
+          <div class="hero-grid">
+            <div>
+              <p class="eyebrow">FREE PLAYBOOK · FOR REAL ESTATE PRINCIPALS</p>
+              <h1>How much commission is sitting in your CRM right now?</h1>
+              <p class="subhead">If you have between 5,000 and 80,000 leads in your database, the answer is probably more than your annual GCI. Run the audit on yours.</p>
+              <div class="hero-preview">
+                <img src="/assets/audit-mockup.png" alt="The Dormant Database Audit playbook preview" />
+              </div>
+            </div>
+            <div>
+              <div class="form-card">
+                <p class="form-heading">Get the audit — 8 pages, free.</p>
+                <form data-audit-form novalidate>
+                  <input class="field" type="text" name="firstName" placeholder="First name" maxlength="60" required />
+                  <input class="field" type="email" name="email" placeholder="Email" required />
+                  <p class="error" data-error></p>
+                  <button class="btn" type="submit" data-submit disabled>Send me the audit</button>
+                  <p class="micro">No spam. One playbook, then occasional case studies. Unsubscribe anytime.<br/>By submitting, you agree to receive emails from Think ALM. Unsubscribe anytime.</p>
+                </form>
+                <p class="trust-strip">Used by Forsyth Real Estate — Sydney agency, operating since 1924.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Eight pages. Fifteen minutes. The math most agencies have never run.</h2>
+          <div class="inside-grid">
+            <div class="inside-card">
+              <h3>Calculate your dormant pipeline</h3>
+              <p>The four-stream formula, a worked example on a 12,000-lead database, and a fillable table for your own numbers.</p>
+            </div>
+            <div class="inside-card">
+              <h3>Score your database health</h3>
+              <p>A 10-point rubric across data quality, activity, and systems. Score 0–3 means latent value is sitting on the floor.</p>
+            </div>
+            <div class="inside-card">
+              <h3>Identify the highest-value streams</h3>
+              <p>Appraisal-eligible vendors, buyer pipeline, rental → property management, vendor referrals. Which one is most extractable from your CRM.</p>
+            </div>
+            <div class="inside-card">
+              <h3>Understand why most attempts fail</h3>
+              <p>Manual outbound, bulk SMS blasts, outsourced call centres — three failure modes and the four properties of a system that actually works.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="background:#F2F6FA;">
+        <div class="container">
+          <div class="band">
+            <div class="cred-head">
+              <h2>Built inside a 100-year-old Sydney agency.</h2>
+              <img class="forsyth-logo" src="/assets/forsyth-logo.png" alt="Forsyth logo" />
+            </div>
+            <p>Forsyth Real Estate has been operating in Sydney since 1924. Earlier this year we deployed an AI database reactivation system inside their Repit CRM. It works their lead database around the clock, qualifies in real time, and books appointments directly into agent calendars. The audit is the playbook — the same one we used to scope that engagement.</p>
+            <div class="system-preview">
+              <img src="/assets/system-insight.png" alt="Forsyth system workflow screenshot" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container">
+          <h2>Who wrote this</h2>
+          <div class="founder">
+            <img src="/assets/charlie-bailey.png" alt="Charlie Bailey" />
+            <p>Charlie Bailey, founder of Think ALM. Fifteen years in sales — D2D, B2B, phone, management. Built Think ALM specifically for Australian real estate, embedded in real agencies, building systems that ship. Based in Melbourne.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" style="background:#F2F6FA;">
+        <div class="container">
+          <h2>FAQ</h2>
+          <details>
+            <summary>Is this actually free?</summary>
+            <p>Yes. Eight pages, no email-gated upsell, no fake “book a call to unlock the second half.” Submit the form, get the PDF. The methodology is yours.</p>
+          </details>
+          <details>
+            <summary>Will I be added to a sales sequence?</summary>
+            <p>Yes, but a useful one. After the audit you'll get the Forsyth case study, a short note on how to interpret your score, and a single soft offer to book a 15-minute call. No phone calls. No daily emails. Unsubscribe anytime.</p>
+          </details>
+          <details>
+            <summary>Who is this for?</summary>
+            <p>Real estate agency principals and operations leads in Australia with 5,000+ leads in their CRM. If you're a solo agent or under 5,000 contacts, the math will still work but the ROI on the system Think ALM builds won't justify the engagement.</p>
+          </details>
+        </div>
+      </section>
+
+      <section class="section final-cta">
+        <div class="container">
+          <h2>Run the audit. Then decide.</h2>
+          <p style="margin-bottom:18px;">Eight pages. Calculator inside. The four-stream framework. Your move.</p>
+          <div class="form-card" style="max-width:560px;">
+            <form data-audit-form novalidate>
+              <input class="field" type="text" name="firstName" placeholder="First name" maxlength="60" required />
+              <input class="field" type="email" name="email" placeholder="Email" required />
+              <p class="error" data-error></p>
+              <button class="btn" type="submit" data-submit disabled>Send me the audit</button>
+              <p class="micro">No spam. One playbook, then occasional case studies. Unsubscribe anytime.<br/>By submitting, you agree to receive emails from Think ALM. Unsubscribe anytime.</p>
+            </form>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="container">
+        Think ALM · AI Automation &amp; Sales Systems · Melbourne, Australia<br/>
+        03 4157 6313 · admin@thinkalm.com.au<br/>
+        <a href="#">Privacy</a> · <a href="#">Terms</a>
+      </div>
+    </footer>
+
+    <script>
+      const GOOGLE_ADS_SEND_TO = window.AUDIT_GOOGLE_ADS_SEND_TO || '';
+
+      function validateEmail(email) {
+        return /^(?:[a-zA-Z0-9_'^&/+-])+(?:\.(?:[a-zA-Z0-9_'^&/+-])+)*@(?:(?:[a-zA-Z0-9-]+\.)+[a-zA-Z]{2,})$/.test(email);
+      }
+
+      function fireSubmitEvents() {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push({
+          event: 'audit_optin_submit',
+          form_id: 'audit_optin',
+          content_name: 'dormant_database_audit'
+        });
+
+        if (typeof window.fbq === 'function') {
+          window.fbq('track', 'Lead', { content_name: 'dormant_database_audit' });
+        }
+        if (typeof window.gtag === 'function') {
+          window.gtag('event', 'generate_lead', { form_id: 'audit_optin' });
+          if (GOOGLE_ADS_SEND_TO) {
+            window.gtag('event', 'conversion', { send_to: GOOGLE_ADS_SEND_TO });
+          }
+        }
+      }
+
+      async function submitAudit(firstName, email) {
+        const response = await fetch('/api/audit-optin', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            firstName,
+            email,
+            source: 'dormant_database_audit',
+            pageUrl: window.location.href,
+            submittedAt: new Date().toISOString()
+          })
+        });
+
+        if (!response.ok) {
+          throw new Error('Submit failed');
+        }
+      }
+
+      document.querySelectorAll('[data-audit-form]').forEach((form) => {
+        const firstNameInput = form.querySelector('input[name="firstName"]');
+        const emailInput = form.querySelector('input[name="email"]');
+        const submitButton = form.querySelector('[data-submit]');
+        const errorEl = form.querySelector('[data-error]');
+
+        function updateState() {
+          const valid = firstNameInput.value.trim().length > 0 &&
+            firstNameInput.value.trim().length <= 60 &&
+            validateEmail(emailInput.value.trim());
+          submitButton.disabled = !valid;
+        }
+
+        firstNameInput.addEventListener('input', updateState);
+        emailInput.addEventListener('input', updateState);
+        updateState();
+
+        form.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          errorEl.textContent = '';
+
+          const firstName = firstNameInput.value.trim();
+          const email = emailInput.value.trim();
+          if (!firstName || firstName.length > 60 || !validateEmail(email)) {
+            errorEl.textContent = 'Please enter a valid first name and email.';
+            return;
+          }
+
+          submitButton.disabled = true;
+          submitButton.textContent = 'Sending...';
+          try {
+            fireSubmitEvents();
+            await submitAudit(firstName, email);
+            window.location.href = '/audit/thanks';
+          } catch (err) {
+            errorEl.textContent = 'Could not submit right now. Please try again.';
+            submitButton.textContent = 'Send me the audit';
+            updateState();
+          }
+        });
+      });
+    </script>
+  </body>
+  </html>

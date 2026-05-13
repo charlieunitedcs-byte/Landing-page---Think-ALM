@@ -162,6 +162,13 @@ function App() {
 
           <div className="max-w-6xl mx-auto">
             <DatabaseWorthCalculator onDownloadAudit={() => handleDownloadAuditClick('calculator-primary')} />
+            <div className="mt-6 rounded-2xl border border-white/10 bg-white p-4 shadow-[0_20px_60px_rgba(15,23,42,0.08)]">
+              <img
+                src="/assets/audit-mockup.png"
+                alt="The Dormant Database Audit preview"
+                className="w-full max-w-2xl mx-auto rounded-xl object-contain"
+              />
+            </div>
           </div>
         </Section>
       </SectionContainer>
